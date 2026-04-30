@@ -9,19 +9,180 @@
 <style>
   body { background:#111; color:#fff; font-family:Arial; margin:0; padding:15px; }
   h1 { text-align:center; color:#FF6B00; }
-  .logo { width:80px; height:80px; border-radius:50%; display:block; margin:10px auto; border:3<!DOCTYPE html>
-<html>
-<head>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Diop & Frère Shop - Saint Louis</title>
-<meta name="mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="theme-color" content="#FF6B00">
-<style>
-  body { background:#111; color:#fff; font-family:Arial; margin:0; padding:15px; }
-  h1 { text-align:center; color:#FF6B00; }
   .logo { width:80px; height:80px; border-radius:50%; display:block; margin:10px auto; border:3px solid #FF6B00; }
   .produit { background:#1a1a1a; border:1px solid #333; border-radius:12px; padding:15px; margin:15px 0; }
   .produit img { width:100%; border-radius:8px; height:200px; object-fit:cover; }
   .prix { color:#FF6B00; font-size:22px; font-weight:bold; }
-  button { border:none; padding:14px; border-radius:8px; width:100%; font-size:16
+  button { border:none; padding:14px; border-radius:8px; width:100%; font-size:16px; margin-top:8px; cursor:pointer; font-weight:bold; }
+  .btn-ajouter { background:#FF6B00; color:#fff; }
+  #panier { position:fixed; bottom:0; left:0; right:0; background:#000; border-top:2px solid #FF6B00; padding:15px; }
+  #date-event { width:100%; padding:10px; margin:8px 0; border-radius:6px; border:1px solid #333; background:#1a1a1a; color:#fff; }
+  #panier-whatsapp { background:#25D366; color:#fff; margin-bottom:6px; }
+  #panier-wave { background:#1DC4FF; color:#fff; margin-bottom:6px; display:none; }
+  #panier-om { background:#FF7900; color:#fff; display:none; }
+  .total { font-size:16px; margin-bottom:10px; text-align:center; }
+  .categorie { color:#FF6B00; font-size:12px; font-weight:bold; }
+</style>
+</head>
+<body>
+
+<img src="https://i.ibb.co/7X7QZ8J/logo-mp.png" alt="Logo" class="logo">
+<h1>🛍️ DIOP & FRÈRE SHOP</h1>
+<p style="text-align:center;">Saint Louis • 78 307 16 66 • Accessoires & Maison</p>
+
+<div class="produit">
+  <div class="categorie">PARFUM HOMME</div>
+  <img src="https://images.unsplash.com/photo-1594035910387-fea47794261f?w=500" alt="Parfum Homme">
+  <h3>Parfum Homme Longue Durée</h3>
+  <p>Senteur fraîche • 100ml • Qualité supérieure</p>
+  <div class="prix">12 000 FCFA</div>
+  <button class="btn-ajouter" onclick="ajouterPanier('Parfum Homme 100ml', 12000)">Ajouter au panier</button>
+</div>
+
+<div class="produit">
+  <div class="categorie">PARFUM FEMME</div>
+  <img src="https://images.unsplash.com/photo-1541643600914-78b084683601?w=500" alt="Parfum Femme">
+  <h3>Parfum Femme Douceur</h3>
+  <p>Senteur florale • 100ml • Tenue 12h</p>
+  <div class="prix">12 000 FCFA</div>
+  <button class="btn-ajouter" onclick="ajouterPanier('Parfum Femme 100ml', 12000)">Ajouter au panier</button>
+</div>
+
+<div class="produit">
+  <div class="categorie">ACCESSOIRES FILLE</div>
+  <img src="https://images.unsplash.com/photo-1611652022419-a9419f74343d?w=500" alt="Bijoux">
+  <h3>Set Bijoux Femme</h3>
+  <p>Collier + Boucles + Bracelet • Doré/Argenté</p>
+  <div class="prix">8 500 FCFA</div>
+  <button class="btn-ajouter" onclick="ajouterPanier('Set Bijoux Femme', 8500)">Ajouter au panier</button>
+</div>
+
+<div class="produit">
+  <div class="categorie">BRACELETS</div>
+  <img src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=500" alt="Bracelets">
+  <h3>Bracelets Tendance</h3>
+  <p>Perles, cuir, acier • Homme/Femme • Prix selon modèle</p>
+  <div class="prix">1 500 FCFA</div>
+  <button class="btn-ajouter" onclick="ajouterPanier('Bracelet Tendance', 1500)">Ajouter au panier</button>
+</div>
+
+<div class="produit">
+  <div class="categorie">BEAUTÉ</div>
+  <img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=500" alt="Gloss">
+  <h3>Gloss Lèvres Brillantes</h3>
+  <p>Hydratant • Longue tenue • Plusieurs teintes</p>
+  <div class="prix">1 500 FCFA</div>
+  <button class="btn-ajouter" onclick="ajouterPanier('Gloss Lèvres', 1500)">Ajouter au panier</button>
+</div>
+
+<div class="produit">
+  <div class="categorie">ACCESSOIRES HOMME</div>
+  <img src="https://images.unsplash.com/photo-1627123424574-724758594e93?w=500" alt="Montre">
+  <h3>Montre Homme Classe</h3>
+  <p>Bracelet cuir • Étanche • Garantie 6 mois</p>
+  <div class="prix">15 000 FCFA</div>
+  <button class="btn-ajouter" onclick="ajouterPanier('Montre Homme Cuir', 15000)">Ajouter au panier</button>
+</div>
+
+<div class="produit">
+  <div class="categorie">SAC</div>
+  <img src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=500" alt="Sac">
+  <h3>Sac Tendance</h3>
+  <p>Plusieurs modèles • Bonne qualité</p>
+  <div class="prix">3 000 FCFA</div>
+  <button class="btn-ajouter" onclick="ajouterPanier('Sac Tendance', 3000)">Ajouter au panier</button>
+</div>
+
+<div class="produit">
+  <div class="categorie">CEINTURE</div>
+  <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=500" alt="Ceinture">
+  <h3>Ceinture Cuir Homme/Femme</h3>
+  <p>Cuir véritable • Toutes tailles</p>
+  <div class="prix">2 500 FCFA</div>
+  <button class="btn-ajouter" onclick="ajouterPanier('Ceinture Cuir', 2500)">Ajouter au panier</button>
+</div>
+
+<div class="produit">
+  <div class="categorie">CHAUSSETTES</div>
+  <img src="https://images.unsplash.com/photo-1586350977771-b3b0abd50c82?w=500" alt="Chaussettes">
+  <h3>Chaussettes Qualité</h3>
+  <p>Coton doux • Plusieurs couleurs • 250 à 500 FCFA la paire</p>
+  <div class="prix">500 FCFA</div>
+  <button class="btn-ajouter" onclick="ajouterPanier('Chaussettes Qualité', 500)">Ajouter au panier</button>
+</div>
+
+<div class="produit">
+  <div class="categorie">MAISON</div>
+  <img src="https://images.unsplash.com/photo-1631679706909-1844bbd07221?w=500" alt="Drap">
+  <h3>Drap de Lit 2 Places</h3>
+  <p>100% Coton • 220x240cm • Plusieurs couleurs</p>
+  <div class="prix">10 000 FCFA</div>
+  <button class="btn-ajouter" onclick="ajouterPanier('Drap de Lit 2 Places', 10000)">Ajouter au panier</button>
+</div>
+
+<div class="produit">
+  <div class="categorie">MAISON</div>
+  <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=500" alt="Drap">
+  <h3>Drap de Lit 3 Places</h3>
+  <p>Qualité supérieure • 240x260cm • Doux</p>
+  <div class="prix">13 500 FCFA</div>
+  <button class="btn-ajouter" onclick="ajouterPanier('Drap de Lit 3 Places', 13500)">Ajouter au panier</button>
+</div>
+
+<div style="height:250px;"></div>
+
+<div id="panier">
+  <div class="total">
+    Total : <span id="total">0</span> FCFA<br>
+    Acompte 30% : <span id="acompte">0</span> FCFA
+  </div>
+  <input type="date" id="date-event" placeholder="Date de livraison souhaitée">
+  <button id="panier-whatsapp" onclick="commanderWhatsApp()">1. Commander sur WhatsApp 📱</button>
+  <button id="panier-wave" onclick="payerAcompte('Wave')">2. Payer via Wave 💙</button>
+  <button id="panier-om" onclick="payerAcompte('OM')">2. Payer via Orange Money 🧡</button>
+</div>
+
+<script>
+  let panier = [];
+  let total = 0;
+  const numero = "221783071666"; 
+  const lienWave = "https://pay.wave.com/m/REMPLACE_PAR_TON_LIEN"; 
+  const lienOM = "https://orangemoney.orange.sn/payment/REMPLACE_PAR_TON_LIEN";
+
+  function ajouterPanier(nom, prix) {
+    panier.push({nom, prix});
+    total += prix;
+    let acompte = Math.round(total * 0.3);
+    document.getElementById('total').innerText = total.toLocaleString();
+    document.getElementById('acompte').innerText = acompte.toLocaleString();
+    document.getElementById('panier-wave').style.display = 'block';
+    document.getElementById('panier-om').style.display = 'block';
+  }
+
+  function getDate() {
+    const date = document.getElementById('date-event').value;
+    if(!date) { alert("Choisis la date de livraison stp"); return null; }
+    return date;
+  }
+
+  function commanderWhatsApp() {
+    if(panier.length === 0) { alert("Panier vide"); return; }
+    const date = getDate(); if(!date) return;
+    let acompte = Math.round(total * 0.3);
+    let message = `Bonjour Diop & Frère Shop,%0AJe commande pour livraison le ${date} :%0A`;
+    panier.forEach(p => { message += `- ${p.nom} : ${p.prix.toLocaleString()} FCFA%0A`; });
+    message += `%0ATotal : ${total.toLocaleString()} FCFA%0AAcompte 30% à payer : ${acompte.toLocaleString()} FCFA`;
+    window.open(`https://wa.me/${numero}?text=${message}`, '_blank');
+  }
+
+  function payerAcompte(type) {
+    if(panier.length === 0) { alert("Panier vide"); return; }
+    const date = getDate(); if(!date) return;
+    let acompte = Math.round(total * 0.3);
+    alert(`Acompte de ${acompte.toLocaleString()} FCFA pour livraison le ${date}. Après paiement, envoie-moi la capture sur WhatsApp au 78 307 16 66.`);
+    if(type === 'Wave') window.open(lienWave, '_blank');
+    if(type === 'OM') window.open(lienOM, '_blank');
+  }
+</script>
+</body>
+                                 </html>
