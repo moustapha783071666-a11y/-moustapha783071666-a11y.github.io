@@ -2,111 +2,15 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Moustapha Photo - Mbacké</title>
+<title>Diop & Frère Shop - Saint Louis</title>
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="theme-color" content="#111111">
+<meta name="theme-color" content="#FF6B00">
 <style>
   body { background:#111; color:#fff; font-family:Arial; margin:0; padding:15px; }
-  h1 { text-align:center; color:#25D366; }
-  .logo { width:80px; height:80px; border-radius:50%; display:block; margin:10px auto; border:3px solid #25D366; }
+  h1 { text-align:center; color:#FF6B00; }
+  .logo { width:80px; height:80px; border-radius:50%; display:block; margin:10px auto; border:3px solid #FF6B00; }
   .produit { background:#1a1a1a; border:1px solid #333; border-radius:12px; padding:15px; margin:15px 0; }
-  .produit img { width:100%; border-radius:8px; }
-  .prix { color:#25D366; font-size:22px; font-weight:bold; }
-  button { border:none; padding:14px; border-radius:8px; width:100%; font-size:16px; margin-top:8px; cursor:pointer; font-weight:bold; }
-  .btn-ajouter { background:#25D366; color:#fff; }
-  #panier { position:fixed; bottom:0; left:0; right:0; background:#000; border-top:2px solid #25D366; padding:15px; }
-  #date-event { width:100%; padding:10px; margin:8px 0; border-radius:6px; border:1px solid #333; background:#1a1a1a; color:#fff; }
-  #panier-whatsapp { background:#FF7900; color:#fff; margin-bottom:6px; }
-  #panier-wave { background:#1DC4FF; color:#fff; margin-bottom:6px; display:none; }
-  #panier-om { background:#FF7900; color:#fff; display:none; }
-  .total { font-size:16px; margin-bottom:10px; text-align:center; }
-</style>
-</head>
-<body>
-
-<img src="https://i.ibb.co/7X7QZ8J/logo-mp.png" alt="Logo" class="logo">
-<h1>📸 MOUSTAPHA PHOTO</h1>
-<p style="text-align:center;">Mbacké • 78 216 26 66</p>
-
-<div class="produit">
-  <img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=500" alt="Mariage">
-  <h3>Pack Mariage Complet</h3>
-  <p>8h de couverture + 300 photos retouchées + Album</p>
-  <div class="prix">150 000 FCFA</div>
-  <button class="btn-ajouter" onclick="ajouterPanier('Pack Mariage Complet', 150000)">Ajouter au panier</button>
-</div>
-
-<div class="produit">
-  <img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=500" alt="Portrait">
-  <h3>Séance Portrait Studio</h3>
-  <p>1h de shooting + 10 photos retouchées HD</p>
-  <div class="prix">15 000 FCFA</div>
-  <button class="btn-ajouter" onclick="ajouterPanier('Séance Portrait', 15000)">Ajouter au panier</button>
-</div>
-
-<div class="produit">
-  <img src="https://images.unsplash.com/photo-1511285560929-80af5b3da0c7?w=500" alt="Baptême">
-  <h3>Baptême / Anniversaire</h3>
-  <p>4h de couverture + 150 photos</p>
-  <div class="prix">75 000 FCFA</div>
-  <button class="btn-ajouter" onclick="ajouterPanier('Baptême Anniversaire', 75000)">Ajouter au panier</button>
-</div>
-
-<div style="height:250px;"></div>
-
-<div id="panier">
-  <div class="total">
-    Total : <span id="total">0</span> FCFA<br>
-    Acompte 30% : <span id="acompte">0</span> FCFA
-  </div>
-  <input type="date" id="date-event">
-  <button id="panier-whatsapp" onclick="commanderWhatsApp()">1. Commander sur WhatsApp 📱</button>
-  <button id="panier-wave" onclick="payerAcompte('Wave')">2. Payer via Wave 💙</button>
-  <button id="panier-om" onclick="payerAcompte('OM')">2. Payer via Orange Money 🧡</button>
-</div>
-
-<script>
-  let panier = [];
-  let total = 0;
-  const numero = "221782162666"; 
-  const lienWave = "https://pay.wave.com/m/REMPLACE_PAR_TON_LIEN"; 
-  const lienOM = "https://orangemoney.orange.sn/payment/REMPLACE_PAR_TON_LIEN";
-
-  function ajouterPanier(nom, prix) {
-    panier.push({nom, prix});
-    total += prix;
-    let acompte = Math.round(total * 0.3);
-    document.getElementById('total').innerText = total.toLocaleString();
-    document.getElementById('acompte').innerText = acompte.toLocaleString();
-    document.getElementById('panier-wave').style.display = 'block';
-    document.getElementById('panier-om').style.display = 'block';
-  }
-
-  function getDate() {
-    const date = document.getElementById('date-event').value;
-    if(!date) { alert("Choisis la date de l'événement stp"); return null; }
-    return date;
-  }
-
-  function commanderWhatsApp() {
-    if(panier.length === 0) { alert("Panier vide"); return; }
-    const date = getDate(); if(!date) return;
-    let acompte = Math.round(total * 0.3);
-    let message = `Bonjour Moustapha,%0AJe commande pour le ${date} :%0A`;
-    panier.forEach(p => { message += `- ${p.nom} : ${p.prix.toLocaleString()} FCFA%0A`; });
-    message += `%0ATotal : ${total.toLocaleString()} FCFA%0AAcompte 30% à payer : ${acompte.toLocaleString()} FCFA`;
-    window.open(`https://wa.me/${numero}?text=${message}`, '_blank');
-  }
-
-  function payerAcompte(type) {
-    if(panier.length === 0) { alert("Panier vide"); return; }
-    const date = getDate(); if(!date) return;
-    let acompte = Math.round(total * 0.3);
-    alert(`Acompte de ${acompte.toLocaleString()} FCFA pour le ${date}. Après paiement, envoie-moi la capture sur WhatsApp au 78 216 26 66.`);
-    if(type === 'Wave') window.open(lienWave, '_blank');
-    if(type === 'OM') window.open(lienOM, '_blank');
-  }
-</script>
-</body>
-  </html>
+  .produit img { width:100%; border-radius:8px; height:200px; object-fit:cover; }
+  .prix { color:#FF6B00; font-size:22px; font-weight:bold; }
+  button { border:none; padding:14px; border-radius:8px; width:100%; font-size:16
